@@ -6,3 +6,9 @@ export interface ICoord {
 export interface ICoordWithOffset extends ICoord {
     offset: number;
 }
+
+export enum CONTROL {
+    KEYS = 'KEYS',
+    DUMMY = 'DUMMY',
+    AI = 'AI',
+}

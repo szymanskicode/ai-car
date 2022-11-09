@@ -1,16 +1,25 @@
+import { CONTROL } from '../models';
+
 export class Controls {
     forward: boolean;
     left: boolean;
     right: boolean;
     reverse: boolean;
 
-    constructor() {
+    constructor(type: CONTROL) {
         this.forward = false;
         this.left = false;
         this.right = false;
         this.reverse = false;
 
-        this.addKeyboardListeners();
+        switch (type) {
+            case CONTROL.KEYS:
+                this.addKeyboardListeners();
+                break;
+            case CONTROL.DUMMY:
+                this.forward = true;
+                break;
+        }
     }
 
     private addKeyboardListeners() {
