@@ -1,8 +1,8 @@
-export interface Coord {
+export interface ICoord {
     x: number;
     y: number;
 }
 
-export interface CoordWithOffset extends Coord {
+export interface ICoordWithOffset extends ICoord {
     offset: number;
 }

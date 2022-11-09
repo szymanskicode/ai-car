@@ -1,10 +1,10 @@
-import { Coord, CoordWithOffset } from './models';
+import { ICoord, ICoordWithOffset } from './models';
 
 export function lerp(a: number, b: number, t: number): number {
     return a + (b - a) * t;
 }
 
-export function getIntersection(a: Coord, b: Coord, c: Coord, d: Coord): CoordWithOffset | null {
+export function getIntersection(a: ICoord, b: ICoord, c: ICoord, d: ICoord): ICoordWithOffset | null {
     const tTop = (d.x - c.x) * (a.y - c.y) - (d.y - c.y) * (a.x - c.x);
     const uTop = (c.y - a.y) * (a.x - b.x) - (c.x - a.x) * (a.y - b.y);
     const bottom = (d.y - c.y) * (b.x - a.x) - (d.x - c.x) * (b.y - a.y);
@@ -22,4 +22,23 @@ export function getIntersection(a: Coord, b: Coord, c: Coord, d: Coord): CoordWi
     }
 
     return null;
+}
+
+export function polysIntersect(poly1: ICoord[], poly2: ICoord[]): boolean {
+    for (let i = 0; i < poly1.length; i++) {
+        for (let j = 0; j < poly2.length; j++) {
+            const touch = getIntersection(
+                poly1[i], //
+                poly1[(i + 1) % poly1.length],
+                poly2[j],
+                poly2[(j + 1) % poly2.length]
+            );
+
+            if (touch) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
