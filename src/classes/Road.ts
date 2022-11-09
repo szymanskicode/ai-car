@@ -1,4 +1,5 @@
 import { lerp } from '../utils';
+import { Coord } from '../models';
 
 export class Road {
     x: number;
@@ -8,7 +9,7 @@ export class Road {
     right: number;
     top: number;
     bottom: number;
-    borders: Array<Array<{ x: number; y: number }>>;
+    borders: Array<Array<Coord>>;
 
     constructor(x: number, width: number, laneCount: number = 3) {
         this.x = x;

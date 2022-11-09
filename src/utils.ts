@@ -1,10 +1,10 @@
-type Cord = { x: number; y: number };
+import { Coord, CoordWithOffset } from './models';
 
 export function lerp(a: number, b: number, t: number): number {
     return a + (b - a) * t;
 }
 
-export function getIntersection(a: Cord, b: Cord, c: Cord, d: Cord): { x: number; y: number; offset: number } | null {
+export function getIntersection(a: Coord, b: Coord, c: Coord, d: Coord): CoordWithOffset | null {
     const tTop = (d.x - c.x) * (a.y - c.y) - (d.y - c.y) * (a.x - c.x);
     const uTop = (c.y - a.y) * (a.x - b.x) - (c.x - a.x) * (a.y - b.y);
     const bottom = (d.y - c.y) * (b.x - a.x) - (d.x - c.x) * (b.y - a.y);

@@ -1,6 +1,7 @@
 import { Car } from './Car';
 import { Road } from './Road';
 import { lerp, getIntersection } from '../utils';
+import { Coord, CoordWithOffset } from '../models';
 
 export class Sensor {
     car: Car;
@@ -50,8 +51,8 @@ export class Sensor {
         }
     }
 
-    private getReading(ray: Array<{ x: number; y: number }>, roadBorders: typeof Road.prototype.borders) {
-        let touches: Array<{ x: number; y: number; offset: number }> = [];
+    private getReading(ray: Array<Coord>, roadBorders: typeof Road.prototype.borders) {
+        let touches: Array<CoordWithOffset> = [];
 
         for (let i = 0; i < roadBorders.length; i++) {
             const touch = getIntersection(ray[0], ray[1], roadBorders[i][0], roadBorders[i][1]);

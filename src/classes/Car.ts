@@ -31,27 +31,8 @@ export class Car {
         this.controls = new Controls();
     }
 
-    update(roadBorders: typeof Road.prototype.borders) {
-        this.move();
-        this.sensor.update(roadBorders);
-    }
-
-    draw(ctx: CanvasRenderingContext2D) {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(-this.angle);
-
-        ctx.beginPath();
-        ctx.rect(
-            -this.width / 2, //
-            -this.height / 2,
-            this.width,
-            this.height
-        );
-        ctx.fill();
-        ctx.restore();
-
-        this.sensor.draw(ctx);
+    private createPlygon() {
+        const points = [];
     }
 
     private move() {
@@ -96,5 +77,28 @@ export class Car {
 
         this.x -= Math.sin(this.angle) * this.speed;
         this.y -= Math.cos(this.angle) * this.speed;
+    }
+
+    update(roadBorders: typeof Road.prototype.borders) {
+        this.move();
+        this.sensor.update(roadBorders);
+    }
+
+    draw(ctx: CanvasRenderingContext2D) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(-this.angle);
+
+        ctx.beginPath();
+        ctx.rect(
+            -this.width / 2, //
+            -this.height / 2,
+            this.width,
+            this.height
+        );
+        ctx.fill();
+        ctx.restore();
+
+        this.sensor.draw(ctx);
     }
 }
