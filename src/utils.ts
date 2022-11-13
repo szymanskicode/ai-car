@@ -45,8 +45,8 @@ export function polysIntersect(poly1: ICoord[], poly2: ICoord[]): boolean {
 
 export function getRGBA(value: number) {
     const alpha = Math.abs(value);
-    const R = value > 0 ? 0 : 255;
-    const G = value < 0 ? 0 : 255;
-    const B = 0;
-    return `rgba(${R},${G},${B},${alpha})`;
+    const r = value > 0 ? 0 : 255;
+    const g = value < 0 ? 0 : 255;
+    const b = 0;
+    return `rgba(${r},${g},${b},${alpha})`;
 }
