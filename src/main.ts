@@ -103,8 +103,10 @@ function save() {
 }
 
 function discard() {
+    confirm('Warning! You are about to delete current best brain. After this you will have to train your car again, have fun!');
     localStorage.removeItem('bestBrain');
     console.log('Brain deleted!');
+    location.reload();
 }
 
 function generateCars(n: number) {
