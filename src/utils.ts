@@ -47,6 +47,6 @@ export function getRGBA(value: number) {
     const alpha = Math.abs(value);
     const r = value > 0 ? 0 : 255;
     const g = value < 0 ? 0 : 255;
-    const b = 0;
+    const b = 255;
     return `rgba(${r},${g},${b},${alpha})`;
 }
